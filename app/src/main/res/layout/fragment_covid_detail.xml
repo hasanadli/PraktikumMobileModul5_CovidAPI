@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.covidapi.ui.CovidViewModel" />
+
+        <variable
+            name="kasus"
+            type="com.example.covidapi.network.Covid" />
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/provinsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:text="@{viewModel.covid.provinsi}"
+            android:fontFamily="monospace"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="provinsi"/>
+
+        <ImageView
+            android:id="@+id/kasus"
+            android:layout_width="match_parent"
+            android:layout_height="500px"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{viewModel.covid.kasus}"
+            android:padding="6dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/provinsi"/>
+
+        <TextView
+            android:id="@+id/sembuh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@{`Sembuh: ` + viewModel.covid.sembuh}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kasus"
+            tools:text="sembuh"/>
+
+        <TextView
+            android:id="@+id/meninggal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@{`Meninggal: ` + viewModel.covid.meninggal}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sembuh"
+            tools:text="meninggal"/>
+
+        <TextView
+            android:id="@+id/dirawat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="@{`Dirawat: ` + viewModel.covid.dirawat}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meninggal"
+            tools:text="dirawat"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
